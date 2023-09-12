@@ -1,19 +1,22 @@
-import React from "react"
-import Product from "./New folder (9)/Prooduct.jsx"
-import "./global .css"
+import {useState}  from 'react'
+import Sidebar from './Sidebar'
+import Home from './Home'
+import Header  from './Header'
+import "./App.css"
 
+function App() {
+  const[openSidebarToggle,setOpenSidebarToggle]=useState(false)
 
-const App=()=>{
-    return(
-        <>
-        <h2>Add to Cart</h2>
-        <div className="Mainblock" >
-
-            <Product/>
-        </div>
-        </>
-    )
-
+  const openSidebar=()=>{
+      setOpenSidebarToggle(!openSidebarToggle)
+  }
+  return (
+    <div className='grid-container'>
+    <Header openSidebar={openSidebar}/>
+    <Sidebar openSidebarToggle={openSidebarToggle} openSidebar={openSidebar} />
+    <Home/>  
+    </div>
+  )
 }
-export default App
 
+export default App
