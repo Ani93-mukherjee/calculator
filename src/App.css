@@ -1,50 +1,46 @@
-.App{
-    text-align: center;
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(140deg, rgb(36, 36, 223), rgb(7, 7, 166));
 }
-.header{
-    font-weight: 500;
-    font-size: larger;
-    border:2px solid;
-    background-color: #8E0625;
+.calculator {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+}
+form input{
+    border:none;
+    outline:0;
+    width:60px;
+    height:60px;
+    font-size:16px;
+    background-color:rgb(91,91,151);
+    margin:2px;
+    border-radius:10px;
     color:white;
-    text-align: center;
+    font-weight:border;
+    cursor:pointer;
 }
-.formHeader{
-    margin-left: 12px;
+form input[type="button"]:hover{
+    background-color:rgb(137,22,245)
 
 }
-input{
-    margin-bottom: 5px;
+form .display{
+    display:flex;
+    justify-content:flex-end;
+    margin: 5px 0px 15px 0px;
 }
-.btn{
-    border-color: cadetblue;
-    color:#8E0625;
-}
-.ContactsHeader{
-    font-size: medium;
-    font-weight: 500;
-    font-family: system-ui;
-    margin-left: 12px;
-    margin-top: 20px;
-}
-.add-contact{
-    font-size: initial;
-    font-weight: 500;
-    font-family: fantasy;
-    margin-left: 12px;
 
+form .display input{
+    text-align:right;
+    flex:1;
+    font-size:40px;
+    padding:5px 10px;
+    background-color:rgb(64,64,64)
 }
-.contacts{
-    display: flex;
-    justify-content: space-between;
-    border: 2px solid;
-    background: #FDEFF2;
-    margin-bottom: 2px;
-    margin-left:12px;
-    margin-right: 5px;
-
-
-}
-.email{
-    font-size: x-small;
+form input.equal{
+    width: 123px;
 }

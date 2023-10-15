@@ -1,37 +1,49 @@
-import {React,useState,useEffect} from "react"
-import Header from "./components/Header.js"
-import AddContact from "./components/AddContact.js"
-import ContactList from "./components/ContactList.js"
-// import "./App.css"
-import uuid4 from "uuid4";
+import React, { useState } from "react";
+import "./App.css";
 
-
-const App=()=>{
-    const localStorageKey="contact"
-    const[contact,setContact]=useState(()=>{
-        return JSON.parse(localStorage.getItem(localStorageKey))
-    ||[]})
-    
-    useEffect(()=>{
-        localStorage.setItem(localStorageKey,JSON.stringify(contact))
-    },[contact])
-
-    const addContact=(data)=>{
-       setContact([...contact,{id:uuid4(),data}])
-    }
-    const removeContact= (id) =>{
-        const updatedList=contact.filter((val)=>{
-            return val.id !==id;
-        })
-         setContact(updatedList);
-
-    }
-    return(
-        <div>
-        <Header/>
-        <AddContact addContact={addContact}/>
-        <ContactList contact={contact} removeContact={removeContact}/>
-        </div>
-    )
-}
-export default App
+const App = () => {
+  const [value, setValue] = useState("");
+  return (
+    <div className="container">
+      <div className="calculator">
+        <form action="">
+          <div className="display">
+            <input type="text"  value={value}/>
+          </div>
+          <div>
+            <input type="button" value="AC" onClick={e=>setValue('')}  />
+            <input type="button" value="DE" onClick={e=>setValue(value.slice(0,-1))} />
+            <input type="button" value="." onClick={e=>setValue(value + e.target.value)}/>
+            <input type="button" value="/" onClick={e=>setValue(value + e.target.value)}/>
+          </div>
+          <div>
+            <input type="button" value="7"  onClick={e=>setValue(value + e.target.value)}/>
+            <input type="button" value="8"  onClick={e=>setValue(value + e.target.value)}/>
+            <input type="button" value="9" onClick={e=>setValue(value + e.target.value)}/>
+            <input type="button" value="*" onClick={e=>setValue(value + e.target.value)}/>
+          </div>
+          <div>
+            <input type="button" value="4" onClick={e=>setValue(value + e.target.value)}/>
+            <input type="button" value="5" onClick={e=>setValue(value + e.target.value)}/>
+            <input type="button" value="6" onClick={e=>setValue(value + e.target.value)}/>
+            <input type="button" value="+" onClick={e=>setValue(value + e.target.value)}/>
+          </div>
+          <div>
+            <input type="button" value="1" onClick={e=>setValue(value + e.target.value)}/>
+            <input type="button" value="2" onClick={e=>setValue(value + e.target.value)}/>
+            <input type="button" value="3" onClick={e=>setValue(value + e.target.value)}/>
+            <input type="button" value="-" onClick={e=>setValue(value + e.target.value)}/>
+          </div>
+          <div>
+            
+            <input type="button" value="00" onClick={e=>setValue(value + e.target.value)} />
+            <input type="button" value="0" onClick={e=>setValue(value + e.target.value)} />
+            <input type="button" value="="  className="equal" onClick={e=>setValue(eval(value)) }/>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+export default App;
